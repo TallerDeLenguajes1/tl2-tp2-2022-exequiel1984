@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alumno\\exequiel\\LogTest\\LogTest.csproj": {}
+    "C:\\Users\\Alumno\\exequiel\\tl2-tp2-2022-exequiel1984\\LogTest\\LogTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alumno\\exequiel\\LogTest\\LogTest.csproj": {
+    "C:\\Users\\Alumno\\exequiel\\tl2-tp2-2022-exequiel1984\\LogTest\\LogTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alumno\\exequiel\\LogTest\\LogTest.csproj",
+        "projectUniqueName": "C:\\Users\\Alumno\\exequiel\\tl2-tp2-2022-exequiel1984\\LogTest\\LogTest.csproj",
         "projectName": "LogTest",
-        "projectPath": "C:\\Users\\Alumno\\exequiel\\LogTest\\LogTest.csproj",
+        "projectPath": "C:\\Users\\Alumno\\exequiel\\tl2-tp2-2022-exequiel1984\\LogTest\\LogTest.csproj",
         "packagesPath": "C:\\Users\\Alumno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alumno\\exequiel\\LogTest\\obj\\",
+        "outputPath": "C:\\Users\\Alumno\\exequiel\\tl2-tp2-2022-exequiel1984\\LogTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -46,6 +46,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "NLog": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

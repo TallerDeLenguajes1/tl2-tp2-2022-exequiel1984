@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "hs3iHr2ph9vQLVEtUUHhi3deo/3nyNHuKsogJfbiKsm/INYebYkkneXB98rwUjWMvD0pbFabfxPIJ5c7MGPLCw==",
+  "dgSpecHash": "kmTrG3SsoSu/zqhNNYUHHmz1mecFjyzqNhDjfu6CLQGwDwmU/K6cRiC4RCpOWvI8MQrjpx7YmbGvTnpd58hrxw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alumno\\exequiel\\LogTest\\LogTest.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Alumno\\exequiel\\tl2-tp2-2022-exequiel1984\\LogTest\\LogTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Alumno\\.nuget\\packages\\nlog\\5.0.4\\nlog.5.0.4.nupkg.sha512"
+  ],
   "logs": []
 }
