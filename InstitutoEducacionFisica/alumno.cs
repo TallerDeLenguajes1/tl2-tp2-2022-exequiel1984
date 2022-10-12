@@ -1,6 +1,6 @@
 namespace InstitutoEducacionFisica
 {
-    public class alumno
+    public class Alumno
     {
         private int id;
         private string nombre;
@@ -14,12 +14,12 @@ namespace InstitutoEducacionFisica
         public int Dni { get => dni; set => dni = value; }
         public int Curso { get => curso; set => curso = value; }
 
-        public alumno()
+        public Alumno()
         {
 
         }
 
-        public alumno(int idAlumno, string nombreAlumno, string apellidoAlumno, int dniAlumno, int cursoAlumno)
+        public Alumno(int idAlumno, string nombreAlumno, string apellidoAlumno, int dniAlumno, int cursoAlumno)
         {
             this.Id = idAlumno;
             this.Nombre = nombreAlumno;
