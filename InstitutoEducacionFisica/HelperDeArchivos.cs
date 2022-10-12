@@ -2,8 +2,6 @@ using NLog;
 
 namespace InstitutoEducacionFisica
 {
-    
-
     static class HelperDeArchivos
     {
         public static string SeleccionArchivoCSVPorCurso(int Curso)
@@ -55,7 +53,16 @@ namespace InstitutoEducacionFisica
                 return 1;
             }
         }
-    }
 
+        public static void BorrarListadoCSV(int Curso, Logger Log)
+        {
+            string archivo = "";
+            archivo = SeleccionArchivoCSVPorCurso(Curso);
+            FileStream fileStream = File.Open(archivo, FileMode.Open);
+            fileStream.SetLength(0);
+            fileStream.Close();
     
+            Log.Info($"{DateTime.Now}: Se borro el contenido del archivo {Path.GetFileName(archivo)}");
+        }
+    }   
 }
