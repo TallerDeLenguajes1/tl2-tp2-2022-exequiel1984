@@ -15,7 +15,7 @@ namespace InstitutoEducacionFisica
         {
             try
             {
-                 Alumno NuevoAlumno = new Alumno();
+                Alumno NuevoAlumno = new Alumno();
 
                 Console.WriteLine("\nDatos del alumno");
                 Console.WriteLine("Ingrese el apellido:");
@@ -27,6 +27,9 @@ namespace InstitutoEducacionFisica
                 Console.WriteLine("Ingrese curso:");
                 Console.WriteLine("1: Atletismo, 2: Voley, 3: Futbol");
                 NuevoAlumno.Curso = Convert.ToInt32(Console.ReadLine());
+
+                string archivo = HelperDeArchivos.SeleccionArchivoCSVPorCurso(NuevoAlumno.Curso);
+                NuevoAlumno.Id = HelperDeArchivos.IdentificarSiguienteIDEnCSV(archivo);
 
                 HelperDeArchivos.EscribirContenidoCSV(NuevoAlumno, Log);
             }
