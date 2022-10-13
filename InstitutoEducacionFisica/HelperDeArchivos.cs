@@ -6,7 +6,6 @@ namespace InstitutoEducacionFisica
     {
         private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
         
-
         public static string SeleccionArchivoCSVPorCurso(int Curso)
         {
             try
