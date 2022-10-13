@@ -31,6 +31,7 @@ namespace InstitutoEducacionFisica
                 mensaje = mensaje + " Stack trace: " + ex.StackTrace;
 
                 Log.Error(mensaje);
+                Log.Debug(mensaje);
                 throw;
             }
             catch (OverflowException ex)
