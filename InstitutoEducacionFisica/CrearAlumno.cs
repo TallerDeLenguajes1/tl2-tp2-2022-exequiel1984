@@ -4,7 +4,7 @@ namespace InstitutoEducacionFisica
 {
     public class CrearAlumno
     {
-        public void CargarAlumno(Logger Log)
+        public static void CargarAlumno(Logger Log)
         {
             try
             {

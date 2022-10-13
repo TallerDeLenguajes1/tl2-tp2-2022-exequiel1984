@@ -2,7 +2,7 @@ using NLog;
 
 namespace InstitutoEducacionFisica
 {
-    static class HelperDeArchivos
+    public class HelperDeArchivos
     {
         public static string SeleccionArchivoCSVPorCurso(int Curso)
         {
