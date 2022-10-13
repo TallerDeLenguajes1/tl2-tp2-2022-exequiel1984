@@ -2,7 +2,7 @@
 
 namespace InstitutoEducacionFisica
 {
-    internal class Program
+    public class Program
     {
         private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
 
@@ -14,9 +14,11 @@ namespace InstitutoEducacionFisica
             int ListadoABorrar = Convert.ToInt32(Console.ReadLine());
 
             HelperDeArchivos.BorrarListadoCSV(ListadoABorrar, Log);
+
+            Console.WriteLine("fin");
         }
 
-        private static void CargarAlumno()
+        public static void CargarAlumno()
         {
             try
             {
@@ -50,11 +52,6 @@ namespace InstitutoEducacionFisica
                 mensaje = mensaje + " Stack trace: " + ex.StackTrace;
 
                 Log.Error(mensaje);
-
-                Console.WriteLine("El formato de un argumento es inválido");
-                Console.WriteLine($"Nombre de la fuente del error: {ex.Source}");
-                Console.WriteLine($"Nombre que lanza la excepcion: {ex.TargetSite}");
-                Console.WriteLine($"Diccionario con info adicional: {ex.Data}");
                 throw;
             }
             catch (OverflowException ex)
@@ -69,11 +66,6 @@ namespace InstitutoEducacionFisica
                 mensaje = mensaje + " Stack trace: " + ex.StackTrace;
 
                 Log.Error(mensaje);
-
-                Console.WriteLine("Una operación aritmética, de casteo o conversión ha sufrido una sobrecarga");
-                Console.WriteLine($"Nombre de la fuente del error: {ex.Source}");
-                Console.WriteLine($"Nombre que lanza la excepcion: {ex.TargetSite}");
-                Console.WriteLine($"Diccionario con info adicional: {ex.Data}");
                 throw;
             }
             catch (IOException ex)
