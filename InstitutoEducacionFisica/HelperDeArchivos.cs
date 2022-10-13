@@ -6,39 +6,64 @@ namespace InstitutoEducacionFisica
     {
         public static string SeleccionArchivoCSVPorCurso(int Curso)
         {
-            string archivo = "";
-            switch (Curso)
+            try
             {
-                case 1:
-                    archivo = "csv\\Atletismo.csv";
-                    break;
+                string archivo = "";
+                switch (Curso)
+                {
+                    case 1:
+                        archivo = "csv\\Atletismo.csv";
+                        break;
 
-                case 2:
-                    archivo = "csv\\Voley.csv";
-                    break;
+                    case 2:
+                        archivo = "csv\\Voley.csv";
+                        break;
 
-                case 3:
-                    archivo = "csv\\Futbol.csv";
-                    break;
+                    case 3:
+                        archivo = "csv\\Futbol.csv";
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                    }
+
+                return archivo;
+            }
+            catch (FileNotFoundException ex)
+            {
+                var mensaje = "Error message: " + ex.Message;
+
+                if (ex.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + ex.InnerException.Message;
                 }
 
-            return archivo;
+                mensaje = mensaje + " Stack trace: " + ex.StackTrace;
+
+                Log.Error(mensaje);
+                throw;
+            }
+            
+            
+            
         }
 
         public static void EscribirContenidoCSV(Alumno AlumnoACargar, Logger log)
         {
-            string datos = Convert.ToString(AlumnoACargar.Id) + "," + AlumnoACargar.Apellido + "," + AlumnoACargar.Nombre + "," + Convert.ToString(AlumnoACargar.Dni);
+            try
+            {
+                string datos = Convert.ToString(AlumnoACargar.Id) + "," + AlumnoACargar.Apellido + "," + AlumnoACargar.Nombre + "," + Convert.ToString(AlumnoACargar.Dni);
             
-            string archivo = SeleccionArchivoCSVPorCurso(AlumnoACargar.Curso);
+                string archivo = SeleccionArchivoCSVPorCurso(AlumnoACargar.Curso);
 
-            var escribir = new StreamWriter(File.Open(archivo, FileMode.Append));
-            escribir.WriteLine(datos);
-            escribir.Close();
+                var escribir = new StreamWriter(File.Open(archivo, FileMode.Append));
+                escribir.WriteLine(datos);
+                escribir.Close();
 
-            log.Info($"{DateTime.Now}: Se ha agregado un nuevo alumno al archivo {Path.GetFileName(archivo)}");
+                log.Info($"{DateTime.Now}: Se ha agregado un nuevo alumno al archivo {Path.GetFileName(archivo)}");
+            }
+
+            
         }
 
         public static int IdentificarSiguienteIDEnCSV(string archivo)
@@ -53,6 +78,7 @@ namespace InstitutoEducacionFisica
                 return 1;
             }
         }
+        
 
         public static void BorrarListadoCSV(int Curso, Logger Log)
         {
@@ -63,6 +89,9 @@ namespace InstitutoEducacionFisica
             fileStream.Close();
     
             Log.Info($"{DateTime.Now}: Se borro el contenido del archivo {Path.GetFileName(archivo)}");
-        }
+        }catch (FileNotFoundException ex)
+            {
+                log.Error(ex, "El archivo que se está buscando no existe");
+            }
     }   
 }

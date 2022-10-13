@@ -2,9 +2,10 @@
 
 namespace InstitutoEducacionFisica
 {
+    private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
+
     public class Program
     {
-        private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
 
         static void Main(string[] args)
         {
