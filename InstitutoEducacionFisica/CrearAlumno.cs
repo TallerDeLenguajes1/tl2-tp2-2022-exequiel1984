@@ -4,7 +4,9 @@ namespace InstitutoEducacionFisica
 {
     public class CrearAlumno
     {
-        public static void CargarAlumno(Logger Log)
+        private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
+
+        public static void CargarAlumno()
         {
             try
             {
@@ -24,7 +26,7 @@ namespace InstitutoEducacionFisica
                 string archivo = HelperDeArchivos.SeleccionArchivoCSVPorCurso(NuevoAlumno.Curso);
                 NuevoAlumno.Id = HelperDeArchivos.IdentificarSiguienteIDEnCSV(archivo);
 
-                HelperDeArchivos.EscribirContenidoCSV(NuevoAlumno, Log);
+                HelperDeArchivos.EscribirContenidoCSV(NuevoAlumno);
             }
             catch (FormatException ex)
             {

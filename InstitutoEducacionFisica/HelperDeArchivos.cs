@@ -4,6 +4,9 @@ namespace InstitutoEducacionFisica
 {
     public class HelperDeArchivos
     {
+        private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
+        
+
         public static string SeleccionArchivoCSVPorCurso(int Curso)
         {
             try
@@ -43,12 +46,23 @@ namespace InstitutoEducacionFisica
                 Log.Error(mensaje);
                 throw;
             }
-            
-            
-            
+            catch (DirectoryNotFoundException ex)
+            {
+                var mensaje = "Error message: " + ex.Message;
+
+                if (ex.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + ex.InnerException.Message;
+                }
+
+                mensaje = mensaje + " Stack trace: " + ex.StackTrace;
+
+                Log.Error(mensaje);
+                throw;  
+            }
         }
 
-        public static void EscribirContenidoCSV(Alumno AlumnoACargar, Logger log)
+        public static void EscribirContenidoCSV(Alumno AlumnoACargar)
         {
             try
             {
@@ -60,38 +74,123 @@ namespace InstitutoEducacionFisica
                 escribir.WriteLine(datos);
                 escribir.Close();
 
-                log.Info($"{DateTime.Now}: Se ha agregado un nuevo alumno al archivo {Path.GetFileName(archivo)}");
+                Log.Info($"{DateTime.Now}: Se ha agregado un nuevo alumno al archivo {Path.GetFileName(archivo)}");
             }
+            catch (FileNotFoundException ex)
+            {
+                var mensaje = "Error message: " + ex.Message;
 
-            
+                if (ex.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + ex.InnerException.Message;
+                }
+
+                mensaje = mensaje + " Stack trace: " + ex.StackTrace;
+
+                Log.Error(mensaje);
+                throw;
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                var mensaje = "Error message: " + ex.Message;
+
+                if (ex.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + ex.InnerException.Message;
+                }
+
+                mensaje = mensaje + " Stack trace: " + ex.StackTrace;
+
+                Log.Error(mensaje);
+                throw;  
+            }
         }
 
         public static int IdentificarSiguienteIDEnCSV(string archivo)
         {
-            var lectura = File.ReadAllText(archivo);
-            if (lectura != "")
+            try
             {
-                var linea = (lectura.Split("\n"))[(lectura.Split("\n")).Length - 2];
-                return Convert.ToInt32((linea.Split(","))[0]) + 1;
-            } else
-            {
-                return 1;
+                var lectura = File.ReadAllText(archivo);
+                if (lectura != "")
+                {
+                    var linea = (lectura.Split("\n"))[(lectura.Split("\n")).Length - 2];
+                    return Convert.ToInt32((linea.Split(","))[0]) + 1;
+                } else
+                {
+                    return 1;
+                }
             }
+            catch (FileNotFoundException ex)
+            {
+                var mensaje = "Error message: " + ex.Message;
+
+                if (ex.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + ex.InnerException.Message;
+                }
+
+                mensaje = mensaje + " Stack trace: " + ex.StackTrace;
+
+                Log.Error(mensaje);
+                throw;
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                var mensaje = "Error message: " + ex.Message;
+
+                if (ex.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + ex.InnerException.Message;
+                }
+
+                mensaje = mensaje + " Stack trace: " + ex.StackTrace;
+
+                Log.Error(mensaje);
+                throw;  
+            }
+            
         }
         
-
-        public static void BorrarListadoCSV(int Curso, Logger Log)
+        public static void BorrarListadoCSV(int Curso)
         {
-            string archivo = "";
-            archivo = SeleccionArchivoCSVPorCurso(Curso);
-            FileStream fileStream = File.Open(archivo, FileMode.Open);
-            fileStream.SetLength(0);
-            fileStream.Close();
-    
-            Log.Info($"{DateTime.Now}: Se borro el contenido del archivo {Path.GetFileName(archivo)}");
-        }catch (FileNotFoundException ex)
+            try
             {
-                log.Error(ex, "El archivo que se está buscando no existe");
+                string archivo = "";
+                archivo = SeleccionArchivoCSVPorCurso(Curso);
+                FileStream fileStream = File.Open(archivo, FileMode.Open);
+                fileStream.SetLength(0);
+                fileStream.Close();
+        
+                Log.Info($"{DateTime.Now}: Se borro el contenido del archivo {Path.GetFileName(archivo)}");
             }
+            catch (FileNotFoundException ex)
+            {
+                var mensaje = "Error message: " + ex.Message;
+
+                if (ex.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + ex.InnerException.Message;
+                }
+
+                mensaje = mensaje + " Stack trace: " + ex.StackTrace;
+
+                Log.Error(mensaje);
+                throw;
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                var mensaje = "Error message: " + ex.Message;
+
+                if (ex.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + ex.InnerException.Message;
+                }
+
+                mensaje = mensaje + " Stack trace: " + ex.StackTrace;
+
+                Log.Error(mensaje);
+                throw;  
+            }
+        }
     }   
 }
